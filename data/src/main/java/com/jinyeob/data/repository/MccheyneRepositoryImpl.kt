@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 internal class MccheyneRepositoryImpl @Inject constructor(
     private val mccheyneLocalDataSource: MccheyneLocalDataSource
-): MccheyneRepository {
+) : MccheyneRepository {
     override fun getMccheyneItems(): Flow<MccheyneItems> {
         TODO("Not yet implemented")
     }

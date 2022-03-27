@@ -18,10 +18,10 @@ internal interface MccheyneModule {
     @Singleton
     fun bindsRepository(mccheyneRepositoryImpl: MccheyneRepositoryImpl): MccheyneRepository
 
-    companion object{
+    companion object {
         @Provides
         @Singleton
-        fun providesLocalDataSource(database: EqtDatabase): MccheyneLocalDataSource=
+        fun providesLocalDataSource(database: EqtDatabase): MccheyneLocalDataSource =
             database.getMccheyneLocalDataSource()
     }
 }
