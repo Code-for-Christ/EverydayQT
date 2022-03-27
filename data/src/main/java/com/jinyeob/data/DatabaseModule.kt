@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.jinyeob.data.model.MccheyneItemEntity
 import com.jinyeob.data.model.MccheyneLocalDataSource
 import dagger.Module
 import dagger.Provides
@@ -14,7 +15,7 @@ import javax.inject.Singleton
 
 @Database(
     version = 1,
-    entities = []
+    entities = [MccheyneItemEntity::class]
 )
 
 internal abstract class EqtDatabase : RoomDatabase() {

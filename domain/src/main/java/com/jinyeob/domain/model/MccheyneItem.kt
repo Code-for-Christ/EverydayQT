@@ -4,4 +4,4 @@ import java.io.Serializable
 
 data class MccheyneItem(
     val id: Int
-):Serializable
+) : Serializable
