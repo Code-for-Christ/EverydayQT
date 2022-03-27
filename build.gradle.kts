@@ -6,8 +6,12 @@ buildscript {
         maven("https://plugins.gradle.org/m2/")
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:7.0.4")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10")
+        classpath(KotlinConfig.GRADLE_PLUGIN)
+        classpath(AndroidConfig.BUILD_TOOLS)
+        classpath(DaggerHiltConfig.ANDROID_GRADLE_PLUGIN)
+        classpath(AuthConfig.GOOGLE_SERVICES)
+        classpath(EtcConfig.LINT)
+        classpath(TestConfig.ANDROID_JUNIT5)
     }
 }
 
@@ -17,6 +21,7 @@ allprojects {
         mavenCentral()
         maven("https://jitpack.io")
     }
+    apply(plugin = "org.jlleitschuh.gradle.ktlint")
 }
 
 tasks.register("clean", Delete::class) {
