@@ -12,6 +12,7 @@ buildscript {
         classpath(AuthConfig.GOOGLE_SERVICES)
         classpath(EtcConfig.LINT)
         classpath(TestConfig.ANDROID_JUNIT5)
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10")
     }
 }
 

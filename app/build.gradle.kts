@@ -47,6 +47,9 @@ android {
 }
 
 dependencies {
+    implementation(project(":data"))
+    implementation(project(":domain"))
+
     implementation(KotlinConfig.STDLIB)
 
     CoroutinesConfig.run {
