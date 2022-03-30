@@ -76,16 +76,6 @@ object AndroidConfig {
     const val RECYCLER_VIEW = "androidx.recyclerview:recyclerview:1.2.1"
 }
 
-object ComposeConfig {
-    const val COMPOSE_VERSION = "1.0.5"
-
-    const val UI = "androidx.compose.ui:ui:$COMPOSE_VERSION"
-    const val MATERIAL = "androidx.compose.material:material:$COMPOSE_VERSION"
-    const val UI_TOOLING = "androidx.compose.ui:ui-tooling:$COMPOSE_VERSION"
-    const val RUNTIME_LIVEDATA = "androidx.compose.runtime:runtime-livedata:$COMPOSE_VERSION"
-    const val ACTIVITY = "androidx.activity:activity-compose:1.3.1"
-}
-
 object HiltLifecycleConfig {
     private const val HILT_LIFECYCLE_VERSION = "1.0.0-alpha03"
 
