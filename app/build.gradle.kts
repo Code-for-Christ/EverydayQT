@@ -23,7 +23,6 @@ android {
     buildFeatures {
         viewBinding = true
         dataBinding = true
-        compose = true
     }
     buildTypes {
         getByName("release") {
@@ -37,9 +36,6 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = ComposeConfig.COMPOSE_VERSION
     }
     kotlinOptions {
         jvmTarget = "11"
@@ -60,14 +56,6 @@ dependencies {
     DaggerHiltConfig.run {
         implementation(ANDROID)
         kapt(COMPILER)
-    }
-
-    ComposeConfig.run {
-        implementation(UI)
-        implementation(MATERIAL)
-        implementation(UI_TOOLING)
-        implementation(RUNTIME_LIVEDATA)
-        implementation(ACTIVITY)
     }
 
     AndroidConfig.run {

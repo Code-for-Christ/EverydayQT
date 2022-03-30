@@ -1,6 +1,6 @@
 package com.jinyeob.data.di
 
-import com.jinyeob.data.EqtDatabase
+import com.jinyeob.data.MyDatabase
 import com.jinyeob.data.model.MccheyneLocalDataSource
 import com.jinyeob.data.repository.MccheyneRepositoryImpl
 import com.jinyeob.domain.repository.MccheyneRepository
@@ -21,7 +21,7 @@ internal interface MccheyneModule {
     companion object {
         @Provides
         @Singleton
-        fun providesLocalDataSource(database: EqtDatabase): MccheyneLocalDataSource =
+        fun providesLocalDataSource(database: MyDatabase): MccheyneLocalDataSource =
             database.getMccheyneLocalDataSource()
     }
 }
