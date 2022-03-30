@@ -7,6 +7,7 @@
 
 ## 기술스펙
 
+- [StateFlow](https://developer.android.com/kotlin/flow?hl=ko)
 - [AAC ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel?hl=ko)
 - [AAC Room](https://developer.android.com/topic/libraries/architecture/room?hl=ko)
 - [Dagger Hilt](https://developer.android.com/training/dependency-injection/hilt-android?hl=ko)
