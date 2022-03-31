@@ -47,6 +47,7 @@ dependencies {
     implementation(project(":domain"))
 
     implementation(KotlinConfig.STDLIB)
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
     CoroutinesConfig.run {
         implementation(CORE)
