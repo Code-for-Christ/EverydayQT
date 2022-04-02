@@ -1,8 +1,9 @@
 package com.jinyeob.eqt
 
 import android.annotation.SuppressLint
+import android.app.DatePickerDialog
 import android.os.Bundle
-import android.util.Log
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -11,12 +12,12 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.jinyeob.domain.model.CheckItem
 import com.jinyeob.domain.model.MccheyneItem
 import com.jinyeob.eqt.ExtensionMethods.toShortBible
-import com.jinyeob.eqt.MyApplication.Companion.TAG
 import com.jinyeob.eqt.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.Date
 
 @AndroidEntryPoint
@@ -24,25 +25,55 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val viewModel by viewModels<MainViewModel>()
 
+    @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         lifecycleScope.launch {
-            viewModel.mccheyneFlow.collect { mccheyneItem ->
-                setViews(mccheyneItem)
+            viewModel.mccheyneFlow.collect {
+                viewModel.mccheyneItem = it
+                viewModel.currentSelectedDate.set(Date(System.currentTimeMillis()))
+                setViews(
+                    it,
+                    SimpleDateFormat(DATE_FORMAT).format(viewModel.currentSelectedDate.get()!!)
+                )
             }
         }
+
+        binding.dateButton.setOnClickListener(dateClickListener())
     }
 
     @SuppressLint("SimpleDateFormat")
-    private fun setViews(mccheyneItem: MccheyneItem) {
+    private fun dateClickListener() = View.OnClickListener {
+        val calendar = Calendar.getInstance()
+        val prevDate = Calendar.getInstance()
+        prevDate.time = viewModel.currentSelectedDate.get()!!
+
+        DatePickerDialog(
+            this,
+            { _, year, month, dayOfMonth ->
+                calendar.set(Calendar.YEAR, year)
+                calendar.set(Calendar.MONTH, month)
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+
+                viewModel.currentSelectedDate.set(calendar.time)
+                setViews(
+                    viewModel.mccheyneItem,
+                    SimpleDateFormat(DATE_FORMAT).format(calendar.time)
+                )
+            },
+            prevDate.get(Calendar.YEAR),
+            prevDate.get(Calendar.MONTH),
+            prevDate.get(Calendar.DAY_OF_MONTH)
+        ).show()
+    }
+
+    private fun setViews(mccheyneItem: MccheyneItem, dayKey: String) {
         if (mccheyneItem.plan.isEmpty()) return
 
-        val todayKey = SimpleDateFormat("M-dd").format(Date(System.currentTimeMillis()))
-
-        val checkItems = mccheyneItem.plan[todayKey]
+        val checkItems = mccheyneItem.plan[dayKey]
 
         val checkItemTitles = getCheckItemTitles(checkItems)
         val fragmentList = getMccheyneSingleFragments(checkItems)
@@ -86,5 +117,9 @@ class MainActivity : AppCompatActivity() {
                 tab.text = checkItemTitles[position]
             }.attach()
         }
+    }
+
+    companion object {
+        const val DATE_FORMAT = "M-d"
     }
 }

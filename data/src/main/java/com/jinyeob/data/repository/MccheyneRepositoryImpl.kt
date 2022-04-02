@@ -1,5 +1,6 @@
 package com.jinyeob.data.repository
 
+import android.util.Log
 import com.jinyeob.data.model.MccheyneAssetDataSource
 import com.jinyeob.domain.model.MccheyneItem
 import com.jinyeob.domain.repository.MccheyneRepository
