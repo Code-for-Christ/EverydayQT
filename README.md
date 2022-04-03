@@ -10,6 +10,7 @@
 - [StateFlow](https://developer.android.com/kotlin/flow?hl=ko)
 - [AAC ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel?hl=ko)
 - [AAC Room](https://developer.android.com/topic/libraries/architecture/room?hl=ko)
+- [AAC DataBinding](https://developer.android.com/topic/libraries/data-binding?hl=ko)
 - [Dagger Hilt](https://developer.android.com/training/dependency-injection/hilt-android?hl=ko)
 - [Moshi](https://github.com/square/moshi)
 
