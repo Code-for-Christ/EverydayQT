@@ -12,7 +12,7 @@ import java.util.Date
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(private val mccheyneRepository: MccheyneRepository) :
+class MainViewModel @Inject constructor(mccheyneRepository: MccheyneRepository) :
     ViewModel() {
     val mccheyneFlow = mccheyneRepository.getMccheyneItems()
 

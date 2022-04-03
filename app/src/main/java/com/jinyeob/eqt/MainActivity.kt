@@ -31,6 +31,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.viewModel = viewModel
+
         lifecycleScope.launch {
             viewModel.mccheyneFlow.collect {
                 viewModel.mccheyneItem = it

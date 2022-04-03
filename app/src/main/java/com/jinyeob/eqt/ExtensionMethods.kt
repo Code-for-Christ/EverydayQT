@@ -1,6 +1,22 @@
 package com.jinyeob.eqt
 
+import android.annotation.SuppressLint
+import android.util.Log
+import android.widget.TextView
+import androidx.databinding.BindingAdapter
+import java.text.SimpleDateFormat
+import java.util.Date
+
 object ExtensionMethods {
+
+    @SuppressLint("SimpleDateFormat")
+    @BindingAdapter("app:bindDate")
+    @JvmStatic
+    fun TextView.bindDate(date: Date) {
+        Log.d("tag", date.time.toString())
+        this.text = SimpleDateFormat(MainActivity.DATE_FORMAT).format(date.time)
+    }
+
     fun String.toShortBible(): String = when (this) {
         "창세기" -> "창"
         "출애굽기" -> "출"
