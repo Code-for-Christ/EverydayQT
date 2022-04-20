@@ -1,11 +1,7 @@
 package com.jinyeob.data
 
 import android.content.Context
-import androidx.room.Database
 import androidx.room.Room
-import androidx.room.RoomDatabase
-import com.jinyeob.data.model.MccheyneCheckEntity
-import com.jinyeob.data.model.MccheyneLocalDataSource
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -32,7 +28,6 @@ internal class DatabaseModule {
             "eqt.db"
         ).build()
 
-
     @Provides
     @Singleton
     fun providesMoshi(
@@ -47,5 +42,4 @@ internal class DatabaseModule {
     fun providesMoshiConverter(
         moshi: Moshi
     ): MoshiConverterFactory = MoshiConverterFactory.create(moshi)
-
 }

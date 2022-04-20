@@ -4,6 +4,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "mccheynecheck")
-internal data class MccheyneCheckEntity (
+internal data class MccheyneCheckEntity(
     @PrimaryKey(autoGenerate = true) val id: Long
 )
